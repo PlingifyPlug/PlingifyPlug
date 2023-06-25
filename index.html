@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlingifyPlug</title>
 </head>
-<body>
+<body onload="checkCookie()">
     <div class="img">
         <img src="https://imagetolink.com/ib/q8HJ1w6Z6c.png" alt="Report to staff!">
     </div>
@@ -56,14 +56,48 @@ All our links are at our PlingifyPlug-Hub click on "PlingifyPlug-Hub" button at 
 
 <div class="img">
     <img src="https://imagetolink.com/ib/SFfK8CeItB.png" alt="Report to staff.">
-</div>
 </center>
 
 </div>
 </div>
 </div>
 
-
+<script>
+  function setCookie(cname,cvalue,exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+  
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  function checkCookie() {
+    let user = getCookie("username");
+    if (user != "") {
+      alert("Welcome again " + user);
+    } else {
+       user = prompt("Please enter your email address to acces the site using a fake email will result in being banned.:","");
+       if (user != "" && user != null) {
+         setCookie("username", user, 30);
+       }
+    }
+  }
+  </script>
 
    <script src="//code.tidio.co/1j4sx6r4tgoyt0duta9txfzbkbjwhdb8.js" async></script> 
 </body>
@@ -222,6 +256,7 @@ a:active {
     Time();
     </SCRIPT>
 </html>
+
 
 
 
